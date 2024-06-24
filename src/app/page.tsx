@@ -1,27 +1,28 @@
-'use client'
+"use client";
 
 import axios from "axios";
 import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
-import "./App.css";
 
 type Todo = {
-  id: number;
+  id?: number;
   name: string;
   status: boolean;
 };
 
 function App() {
-  const Todos: React.FC<{ todos: Todo[] }> = ({ todos }) => {
+  const Todos = ({ todos }: { todos: Todo[] }) => {
     return (
       <div className="todos">
         {todos.map((todo) => {
           return (
-            <div key={todo.id} className="todo">
+            <div className="todo">
               <button
-                onClick={() => modifyStatusTodo(todo)}
-                className="checkbox"
-                style={{ backgroundColor: todo.status ? "#A879E6" : "white" }}
+              onClick={() => modifyStatusTodo(todo)}
+                className={`checkbox ${
+                  todo.status ? "bg-[#A879E6]" : "bg-white"
+                }`}
               ></button>
               <p>{todo.name}</p>
               <button onClick={() => handleWithEditButtonClick(todo)}>
@@ -37,38 +38,28 @@ function App() {
     );
   };
 
-  const [todos, setTodos] = useState<Todo[]>([]);
-  const [inputValue, setInputValue] = useState<string>("");
-  const [inputVisbility, setInputVisbility] = useState<boolean>(false);
-  const [selectedTodo, setSelectedTodo] = useState<Todo | undefined>(undefined);
-
   async function handleWithNewButton() {
-    console.log("fasfas");
-    setInputVisbility(!inputVisbility);
+    setInputVisibility(!inputVisibility);
   }
 
-  async function handleWithEditButtonClick(todo: Todo) {
+  async function handleWithEditButtonClick(todo) {
     setSelectedTodo(todo);
-    setInputVisbility(true);
+    setInputVisibility(true);
   }
+
 
   async function getTodos() {
     const response = await axios.get("http://localhost:3333/todos");
     setTodos(response.data);
-    console.log(response.data);
   }
 
-  async function editTodo() {
-    if (selectedTodo) {
-      const response = await axios.put("http://localhost:3333/todos", {
-        id: selectedTodo.id,
-        name: inputValue,
-      });
-      setSelectedTodo(undefined);
-      setInputVisbility(false);
-      getTodos();
-      setInputValue("");
-    }
+  async function createTodo() {
+    const response = await axios.post("http://localhost:3333/todos", {
+      name: inputValue,
+    });
+    getTodos();
+    setInputVisibility(!inputVisibility);
+    setInputValue("");
   }
 
   async function deleteTodo(todo: Todo) {
@@ -84,37 +75,45 @@ function App() {
     getTodos();
   }
 
-  async function createTodo() {
-    const response = await axios.post("http://localhost:3333/todos", {
-      name: inputValue,
-    });
-    getTodos();
-    setInputVisbility(!inputVisbility);
-    setInputValue("");
+  async function editTodo() {
+    if (selectedTodo) {
+      const response = await axios.put("http://localhost:3333/todos", {
+        id: selectedTodo.id,
+        name: inputValue,
+      });
+      setSelectedTodo(undefined);
+      setInputVisibility(false);
+      getTodos();
+      setInputValue("");
+    }
   }
+
+  const [todos, setTodos] = useState([]);
+  const [inputValue, setInputValue] = useState("");
+  const [inputVisibility, setInputVisibility] = useState(false);
+  const [selectedTodo, setSelectedTodo] = useState();
 
   useEffect(() => {
     getTodos();
   }, []);
 
   return (
-    <div className="App">
-      <header className="container">
-        <div className="header">
-          <h1>Dont be lazzy</h1>
-        </div>
-        <Todos todos={todos}></Todos>
-        <input
-          value={inputValue}
-          style={{ display: inputVisbility ? "block" : "none" }}
-          onChange={(event) => {
-            setInputValue(event.target.value);
-          }}
-          className="inputName"
-        ></input>
-        <button
+    <>
+      <div className="App">
+        <main className="container min-w-full">
+          <header className="header">
+            <h1 className="text-2xl">Don't be lazzy!</h1>
+          </header>
+          <Todos todos={todos}></Todos>
+          <input
+            value={inputValue}
+            onChange={(e) => { setInputValue(e.target.value)}}
+            className="inputName"
+            style={{ display: inputVisibility ? "block" : "none" }}
+          ></input>
+          <button
           onClick={
-            inputVisbility
+            inputVisibility
               ? selectedTodo
                 ? editTodo
                 : createTodo
@@ -122,10 +121,11 @@ function App() {
           }
           className="newTaskButton"
         >
-          {inputVisbility ? "Confirm" : "+ New task"}
+          {inputVisibility ? "Confirm" : "+ New task"}
         </button>
-      </header>
-    </div>
+        </main>
+      </div>
+    </>
   );
 }
 
