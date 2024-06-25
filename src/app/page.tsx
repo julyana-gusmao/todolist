@@ -2,11 +2,10 @@
 
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import { useEffect, useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 
 type Todo = {
-  id?: number;
+  id: number;
   name: string;
   status: boolean;
 };
@@ -21,10 +20,12 @@ function App() {
               <button
               onClick={() => modifyStatusTodo(todo)}
                 className={`checkbox ${
-                  todo.status ? "bg-[#A879E6]" : "bg-white"
+                  todo.status ? "bg-green-500" : "bg-white"
                 }`}
               ></button>
-              <p>{todo.name}</p>
+              <p className={`${
+                  todo.status ? "line-through" : ""
+                }`}>{todo.name}</p>
               <button onClick={() => handleWithEditButtonClick(todo)}>
                 <AiOutlineEdit size={20} color={"#64697b"}></AiOutlineEdit>
               </button>
@@ -42,7 +43,7 @@ function App() {
     setInputVisibility(!inputVisibility);
   }
 
-  async function handleWithEditButtonClick(todo) {
+  async function handleWithEditButtonClick(todo: Todo) {
     setSelectedTodo(todo);
     setInputVisibility(true);
   }
@@ -91,7 +92,7 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [inputVisibility, setInputVisibility] = useState(false);
-  const [selectedTodo, setSelectedTodo] = useState();
+  const [selectedTodo, setSelectedTodo] = useState({} as Todo | undefined);
 
   useEffect(() => {
     getTodos();
