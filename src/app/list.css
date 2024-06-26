@@ -1,0 +1,85 @@
+.item {
+    border: 0.14rem solid #c3abcc;
+    border-bottom: none;
+    padding: 0.5rem 1rem;
+    list-style: none;
+    width: 20rem;
+    max-width: 70vw;
+    min-height: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .item:last-child {
+    border-bottom: 0.14rem solid #c3abcc;
+  }
+  
+  .item:hover,
+  .item:active {
+    background: #c3abcc;
+  }
+  
+  .item p {
+    width: 8.5rem;
+    flex-grow: 2;
+    padding: 0 0.9rem;
+    text-align: left;
+  }
+  
+  .taskCompleted {
+    text-decoration: line-through;
+    opacity: 70%;
+    font-weight: 100;
+  }
+  
+  .container {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .item span {
+    color: #6ce5d0;
+  }
+  
+  .check {
+    display: flex;
+  }
+  
+  .check > input {
+    opacity: 0;
+  }
+  
+  .check > input + label {
+    position: absolute;
+    display: inline-block;
+  }
+  
+  .check > input + label:before {
+    content: " ";
+    position: absolute;
+    width: 0.7rem;
+    height: 0.7rem;
+    border: 1px solid #ecf3f6;
+    background: none;
+  }
+  
+  .check > input + label:after {
+    content: "✔";
+    position: absolute;
+    font-size: 14px;
+    background-color: #6ce5d0;
+    width: 0.7rem;
+    height: 0.7rem;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.1rem;
+  }
+  
+  .check > input:not(:checked) + label:after {
+    opacity: 0;
+  }
+  

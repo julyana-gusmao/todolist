@@ -1,6 +1,8 @@
 "use client";
 
 import flower from '@/flower.png';
+import form from '@/form-img.svg';
+import pencil from '@/pencil.png';
 import pontinhos from '@/pontinhos.png';
 import smile from '@/smile.png';
 import syn from '@/syn.png';
@@ -8,6 +10,7 @@ import axios from "axios";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
+import "./list.css";
 
 type Todo = {
   id: number;
@@ -26,28 +29,49 @@ function App() {
         <Image src={flower} alt="florzinha" style={{ position: "fixed", bottom: "-55px", left: "-6px", width: "400px" }} />
         <Image src={syn} alt="forminha" style={{ position: "fixed", top: "-10px", right: "-40px", width: "180px" }} />
       </div>
-      <div className="todos">
-        {todos.map((todo) => {
-          return (
-            <div className="todo">
-              <button
-              onClick={() => modifyStatusTodo(todo)}
-                className={`checkbox ${
-                  todo.status ? "bg-green-500" : "bg-white"
-                }`}
-              ></button>
-              <p className={`${
-                  todo.status ? "line-through" : ""
-                }`}>{todo.name}</p>
-              <button onClick={() => handleWithEditButtonClick(todo)}>
-                <AiOutlineEdit size={20} color={"#64697b"}></AiOutlineEdit>
-              </button>
-              <button onClick={() => deleteTodo(todo)}>
-                <AiOutlineDelete size={20} color={"#64697b"}></AiOutlineDelete>
-              </button>
-            </div>
-          );
-        })}
+
+
+      <div className='form-container'>
+        <figure>
+        <Image src={form} alt="div formulario"></Image>
+        </figure>
+        <div className='flex items-center gap-3'>
+        <h1>ToDo List</h1>
+        <span><Image src={pencil} alt="div formulario"></Image></span>
+        </div>
+
+        {todos.length === 0 ? (
+          <span className="noTaskMessaje">Não há tarefas pendentes.</span>
+        ) : (
+          todos.map((todo) => {
+            return (
+              <ul>
+                <div className='item'>
+                  {/* <span className="check"> */}
+                  <input type="checkbox" checked={todo.status} onChange={() => modifyStatusTodo(todo)} />
+                {/* <button
+                onClick={() => modifyStatusTodo(todo)}
+                  className={`checkbox ${
+                    todo.status ? "bg-green-500" : "bg-white"
+                  }`}
+                ></button> */}
+                {/* </span> */}
+                <p className={`${
+                    todo.status ? "line-through" : ""
+                  }`}>{todo.name}</p>
+                <button onClick={() => handleWithEditButtonClick(todo)}>
+                  <AiOutlineEdit size={20} color={"#64697b"}></AiOutlineEdit>
+                </button>
+                <button onClick={() => deleteTodo(todo)}>
+                  <AiOutlineDelete size={20} color={"#64697b"}></AiOutlineDelete>
+                </button>
+                </div>
+              </ul>
+            );
+          })
+        )
+        } 
+
       </div>
       </>
     );
