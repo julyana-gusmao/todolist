@@ -1,6 +1,11 @@
 "use client";
 
+import flower from '@/flower.png';
+import pontinhos from '@/pontinhos.png';
+import smile from '@/smile.png';
+import syn from '@/syn.png';
 import axios from "axios";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai";
 
@@ -13,6 +18,14 @@ type Todo = {
 function App() {
   const Todos = ({ todos }: { todos: Todo[] }) => {
     return (
+      <>
+      <div id="images">
+        <Image src={pontinhos} alt="pontinhos" style={{ position: "fixed", top: "10px", left: "-10px" }} />
+        <Image src={pontinhos} alt="pontinhos" style={{ position: "fixed", top: "300px", right: "-65px" }} />
+        <Image src={smile} alt="carinha feliz" style={{ position: "fixed", bottom: "-3px", right: "-30px", width: "280px" }} />
+        <Image src={flower} alt="florzinha" style={{ position: "fixed", bottom: "-55px", left: "-6px", width: "400px" }} />
+        <Image src={syn} alt="forminha" style={{ position: "fixed", top: "-10px", right: "-40px", width: "180px" }} />
+      </div>
       <div className="todos">
         {todos.map((todo) => {
           return (
@@ -36,6 +49,7 @@ function App() {
           );
         })}
       </div>
+      </>
     );
   };
 
