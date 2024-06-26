@@ -1,0 +1,50 @@
+.add-form {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    bottom: 1.8rem;
+    margin: 2rem 0 0;
+  }
+  
+  .add-form button {
+    font-family: 'Poppins', sans-serif;
+    background: #6ce5d0;
+    color: #fff;
+    border-radius: 20px;
+    padding: 0.4rem 1.5rem;
+    width: full;
+    border-style: none;
+    cursor: pointer;
+    pointer-events: painted;
+  }
+  
+  .add-form input {
+    color: #9E589E;
+    border: solid 0.05rem #c3abcc;
+    border-radius: 50px;
+    font-size: 16px;
+    padding: 1rem;
+    height: 2.3rem;
+    width: 240px;
+    font-size: 12px;
+    outline: none;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .add-form input::placeholder {
+    color: #c3abcc;
+    font-size: 14px;
+    font-weight: 100;
+  }
+  
+  .add-form input:focus {
+    outline: none;
+    width: 340px;
+    max-width: 80vw;
+    transition: all 500ms cubic-bezier(0, 0.11, 0.35, 2);
+  }
