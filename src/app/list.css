@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .item {
     border: 0.14rem solid #c3abcc;
     border-bottom: none;
@@ -83,3 +84,125 @@
     opacity: 0;
   }
   
+=======
+.checkbox {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  border: 2px solid #64697b;
+  box-shadow: none;
+  margin: 10px;
+}
+
+.item {
+  border: 0.14rem solid #c3abcc;
+  border-bottom: none;
+  padding: 0.5rem 1rem;
+  list-style: none;
+  width: 20rem;
+  max-width: 70vw;
+  min-height: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.item:first-child {
+  border-bottom: 0.14rem solid #c3abcc;
+}
+
+.item:hover,
+.item:active {
+  background: #c3abcc;
+}
+
+.item p {
+  width: 8.5rem;
+  flex-grow: 2;
+  padding: 0 0.9rem;
+  text-align: left;
+}
+
+.taskCompleted {
+  text-decoration: line-through;
+  opacity: 70%;
+  font-weight: 100;
+}
+
+.container-div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.check {
+  display: flex;
+  position: relative;
+}
+
+.check > input {
+  opacity: 0;
+  position: absolute;
+  width: 0.8rem;
+  height: 0.8rem;
+  margin: 0;
+  z-index: 2;
+}
+
+.check > input + label {
+  position: absolute;
+  display: inline-block;
+  align-self: center;
+  width: 0.8rem;
+  height: 0.8rem;
+  z-index: 1;
+}
+
+.check > input + label:before {
+  content: " ";
+  position: absolute;
+  width: 0.8rem;
+  height: 0.8rem;
+  border: 1px solid #ecf3f6;
+  background: none;
+  z-index: 1;
+}
+
+.check > input + label:after {
+  content: "✔";
+  position: absolute;
+  font-size: 14px;
+  color: white;
+  background-color: #6ce5d0;
+  width: 0.8rem;
+  height: 0.8rem;
+  transition: all 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.1rem;
+  opacity: 0;
+  z-index: 2;
+}
+
+.check > input:checked + label:after {
+  opacity: 1;
+}
+
+.close-x {
+  position: relative;
+  color: #fff;
+  cursor: pointer;
+  font-size: 9px;
+  background: none;
+  border: none;
+}
+
+.close-x:before {
+  content: "✕";
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 0px;
+}
+>>>>>>> 3e1faac9e8619959d1e2a019ffc7af0a21aa975a

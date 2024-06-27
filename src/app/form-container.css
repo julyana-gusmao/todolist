@@ -1,0 +1,52 @@
+.form-container {
+    border: 2px solid #C3ABCC;
+    border-top: 0px;
+    width: 25rem;
+    max-width: 85vw;
+    height: auto;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    z-index: 100;
+    position: relative;
+  }
+  
+  .form-container ul {
+    flex-grow: 2;
+  }
+  
+  .form-container figure {
+    padding-bottom: 1rem;
+    position: relative;
+    width: 102%;
+  }
+  
+  .form-container figure img {
+    aspect-ratio: 4 / 0;
+    object-fit: contain;
+    width: 100%;
+  }
+  
+  .form-container h1 {
+    display: flex;
+    gap: 0.7rem;
+    align-items: center;
+    font-size: 25px;
+    letter-spacing: 0.5px;
+    font-weight: 800;
+    font-family: "Poppins", sans-serif;
+    margin: 1.5rem 0;
+    color: #ECF3F6;
+    line-height: 0;
+  }
+  
+  .form-container p,
+  .form-container span {
+    font-family: "Source Sans 3", sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    font-weight: 400;
+    color: #ECF3F6;
+  }

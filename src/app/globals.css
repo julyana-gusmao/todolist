@@ -4,24 +4,27 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+<<<<<<< HEAD
+=======
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital@0;1&display=swap');
+
+@media (max-width: 1024px) {
+  #images {
+    display: none;
+  }
+}
+
+>>>>>>> 3e1faac9e8619959d1e2a019ffc7af0a21aa975a
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 
 body{
   justify-content: center;
   height: 100%;
   width: 100%;
-}
-
-p {
-  display: flex;
-  justify-content: center;
-  font-size: xx-large;
-  font-weight: bold;
 }
 
 ul {
@@ -34,10 +37,6 @@ button {
   border: none;
 }
 
-.App {
-  text-align: center;
-}
-
 .container {
   background-color: #9E589E;
   height: 100vh;
@@ -46,6 +45,7 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+<<<<<<< HEAD
 }
 
 .todos {
@@ -182,3 +182,6 @@ input:focus {
   font-weight: 400;
   color:#ECF3F6;
 }
+=======
+}
+>>>>>>> 3e1faac9e8619959d1e2a019ffc7af0a21aa975a
